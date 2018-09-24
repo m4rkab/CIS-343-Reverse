@@ -24,7 +24,7 @@ int read_file(char* filename, char **buffer) {
     return size;
 }
 
-int write_file(char* filename, char*buffer, int size) {
+int write_file(char* filename, char *buffer, int size) {
     FILE* file1;
     file1 = fopen(filename, "w");
     // error handling to make sure file2 exists & is non-null
