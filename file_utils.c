@@ -17,6 +17,7 @@ int read_file(char* filename, char **buffer) {
     stat(filename, &st);
     int size = st.st_size;
 
+    // read file into buffer
     *buffer = malloc(size);
     fread(*buffer, 1, size, file1);
     fclose(file1);
@@ -24,19 +25,19 @@ int read_file(char* filename, char **buffer) {
 }
 
 int write_file(char* filename, char*buffer, int size) {
-    FILE* file2;
-    file2 = fopen(filename, "w");
+    FILE* file1;
+    file1 = fopen(filename, "w");
     // error handling to make sure file2 exists & is non-null
-    if (file2 == NULL) {
+    if (file1 == NULL) {
         fprintf (stderr, "File could not be opened.");
         return -1;
     }
     // written with help from Eris
-    // write from read_file buffer into file2
+    // write from read_file buffer into file1
     for (int c = size - 1; c >= 0; c--) {
         char *x = buffer + c;
-        fprintf(file2, "%c", *x);
+        fprintf(file1, "%c", *x);
     }
-    fclose(file2);
+    fclose(file1);
     return 1;
 }
